@@ -1,0 +1,197 @@
+Starting analysis...
+Processing 36 browser test entries...
+================================================================================
+                    COMPREHENSIVE BROWSER TEST ANALYSIS
+================================================================================
+
+OVERALL SUMMARY:
+--------------------------------------------------
+Total browsers tested: 9
+Total tests performed: 5544
+Unique test types: 103
+Session types: session_3p, session_1p, misc, query, https, fingerprinting, navigation, supercookies, trackers, tracker_cookies, dns
+Average pass rate: 41.8%
+
+🏆 Best performer: tor_nightly (72.1%)
+📉 Worst performer: chrome_nightly (19.6%)
+
+BROWSER BREAKDOWN:
+--------------------------------------------------
+
+TOR NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 444 (72.1%)
+  ❌ Failed: 104 (16.9%)
+  ⚠️  Unsupported: 68 (11.0%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 32/64 (50.0%)
+     session_1p: 52/64 (81.3%)
+     misc: 20/24 (83.3%)
+     query: 72/92 (78.3%)
+     https: 20/20 (100.0%)
+     fingerprinting: 32/32 (100.0%)
+     navigation: 8/12 (66.7%)
+     supercookies: 88/112 (78.6%)
+     trackers: 0/76 (0.0%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 44/44 (100.0%)
+
+BRAVE NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 435 (70.6%)
+  ❌ Failed: 177 (28.7%)
+  ⚠️  Unsupported: 4 (0.6%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 12/64 (18.8%)
+     session_1p: 0/64 (0.0%)
+     misc: 11/24 (45.8%)
+     query: 92/92 (100.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 24/32 (75.0%)
+     navigation: 8/12 (66.7%)
+     supercookies: 112/112 (100.0%)
+     trackers: 76/76 (100.0%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 8/44 (18.2%)
+
+DUCKDUCKGO NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 317 (51.5%)
+  ❌ Failed: 249 (40.4%)
+  ⚠️  Unsupported: 50 (8.1%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 11/64 (17.2%)
+     session_1p: 18/64 (28.1%)
+     misc: 0/24 (0.0%)
+     query: 12/92 (13.0%)
+     https: 8/20 (40.0%)
+     fingerprinting: 8/32 (25.0%)
+     navigation: 8/12 (66.7%)
+     supercookies: 88/112 (78.6%)
+     trackers: 76/76 (100.0%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 12/44 (27.3%)
+
+SAFARI NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 239 (38.8%)
+  ❌ Failed: 328 (53.2%)
+  ⚠️  Unsupported: 49 (8.0%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 12/64 (18.8%)
+     session_1p: 18/64 (28.1%)
+     misc: 0/24 (0.0%)
+     query: 0/92 (0.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 4/32 (12.5%)
+     navigation: 8/12 (66.7%)
+     supercookies: 93/112 (83.0%)
+     trackers: 0/76 (0.0%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 12/44 (27.3%)
+
+FIREFOX NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 236 (38.3%)
+  ❌ Failed: 360 (58.4%)
+  ⚠️  Unsupported: 20 (3.2%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 0/64 (0.0%)
+     session_1p: 0/64 (0.0%)
+     misc: 4/24 (16.7%)
+     query: 0/92 (0.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 4/32 (12.5%)
+     navigation: 8/12 (66.7%)
+     supercookies: 108/112 (96.4%)
+     trackers: 0/76 (0.0%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 20/44 (45.5%)
+
+OPERA NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 188 (30.5%)
+  ❌ Failed: 424 (68.8%)
+  ⚠️  Unsupported: 4 (0.6%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 1/64 (1.6%)
+     session_1p: 0/64 (0.0%)
+     misc: 3/24 (12.5%)
+     query: 0/92 (0.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 0/32 (0.0%)
+     navigation: 4/12 (33.3%)
+     supercookies: 88/112 (78.6%)
+     trackers: 0/76 (0.0%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 0/44 (0.0%)
+
+VIVALDI NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 172 (27.9%)
+  ❌ Failed: 440 (71.4%)
+  ⚠️  Unsupported: 4 (0.6%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 0/64 (0.0%)
+     session_1p: 0/64 (0.0%)
+     misc: 4/24 (16.7%)
+     query: 0/92 (0.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 6/32 (18.8%)
+     navigation: 4/12 (33.3%)
+     supercookies: 88/112 (78.6%)
+     trackers: 0/76 (0.0%)
+     tracker_cookies: 46/76 (60.5%)
+     dns: 8/44 (18.2%)
+
+EDGE NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 164 (26.6%)
+  ❌ Failed: 448 (72.7%)
+  ⚠️  Unsupported: 4 (0.6%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 0/64 (0.0%)
+     session_1p: 0/64 (0.0%)
+     misc: 4/24 (16.7%)
+     query: 0/92 (0.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 0/32 (0.0%)
+     navigation: 4/12 (33.3%)
+     supercookies: 88/112 (78.6%)
+     trackers: 0/76 (0.0%)
+     tracker_cookies: 44/76 (57.9%)
+     dns: 8/44 (18.2%)
+
+CHROME NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 121 (19.6%)
+  ❌ Failed: 491 (79.7%)
+  ⚠️  Unsupported: 4 (0.6%)
+  🔒 Special modes: Nightly
+  📁 Session breakdown:
+     session_3p: 1/64 (1.6%)
+     session_1p: 0/64 (0.0%)
+     misc: 4/24 (16.7%)
+     query: 0/92 (0.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 0/32 (0.0%)
+     navigation: 4/12 (33.3%)
+     supercookies: 88/112 (78.6%)
+     trackers: 0/76 (0.0%)
+     tracker_cookies: 0/76 (0.0%)
+     dns: 8/44 (18.2%)
+
+================================================================================
+TEST TYPE SUMMARY:
+--------------------------------------------------
+Total unique test types: 103
+Test types: cookie (JS), cookie (HTTP), localStorage, indexedDB, fetch cache, XMLHttpRequest cache, iframe cache, CacheStorage, favicon cache, CookieStore, CSS cache, image cache, script cache, font cache, prefetch cache, Alt-Svc, Tor enabled, GPC enabled third-party, ECH enabled, Stream isolation, IP address leak, GPC enabled first-party, fbclid, gclid, msclkid, mc_eid, dclid, oly_anon_id, oly_enc_id, _openstat, vero_conv, vero_id, wickedid, yclid, __s, rb_clickid, s_cid, ml_subscriber, ml_subscriber_hash, _hsenc, __hssc, __hstc, __hsfp, hsCtaTracking, mkt_tok, Upgradable image, Upgradable script, Upgradable hyperlink, Upgradable address, Insecure website warning, screenX, screenY, outerHeight, screen.width, screen.height, Media query screen width, Media query screen height, System font detection, sessionStorage, window.name, document.referrer, SharedWorker, blob, BroadcastChannel, locks, TLS Session ID, H1 connection, H2 connection, H3 connection, getDirectory, ServiceWorker, HSTS cache, HSTS cache (fetch), Google (third-party ad pixel), Google Tag Manager, DoubleClick (Google), Google Analytics, Facebook tracking, Amazon adsystem, Scorecard Research Beacon, New Relic, Criteo, Adobe, Adobe Audience Manager, AppNexus, Twitter pixel, Bing Ads, Taboola, Index Exchange, Yandex Ads, Quantcast, Chartbeat, OS DNS: Cloudflare, OS DNS: Google, OS DNS: Quad9, OS DNS: Comodo, Location: Brazil, Location: China, Location: Germany, Location: India, Location: Nigeria, Location: Russia, Location: United States
+

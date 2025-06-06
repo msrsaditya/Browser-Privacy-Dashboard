@@ -1,0 +1,178 @@
+Starting analysis...
+Processing 38 browser test entries...
+================================================================================
+                    COMPREHENSIVE BROWSER TEST ANALYSIS
+================================================================================
+
+OVERALL SUMMARY:
+--------------------------------------------------
+Total browsers tested: 8
+Total tests performed: 5852
+Unique test types: 103
+Session types: session_3p, session_1p, misc, query, https, fingerprinting, navigation, supercookies, trackers, tracker_cookies, dns
+Average pass rate: 63.0%
+
+🏆 Best performer: brave_incognito_nightly (91.4%)
+📉 Worst performer: edge_incognito_nightly (50.5%)
+
+BROWSER BREAKDOWN:
+--------------------------------------------------
+
+BRAVE INCOGNITO NIGHTLY:
+  📊 Total tests: 770
+  ✅ Passed: 704 (91.4%)
+  ❌ Failed: 61 (7.9%)
+  ⚠️  Unsupported: 5 (0.6%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 80/80 (100.0%)
+     session_1p: 80/80 (100.0%)
+     misc: 15/30 (50.0%)
+     query: 115/115 (100.0%)
+     https: 25/25 (100.0%)
+     fingerprinting: 30/40 (75.0%)
+     navigation: 10/15 (66.7%)
+     supercookies: 140/140 (100.0%)
+     trackers: 95/95 (100.0%)
+     tracker_cookies: 95/95 (100.0%)
+     dns: 19/55 (34.5%)
+
+TOR INCOGNITO NIGHTLY:
+  📊 Total tests: 770
+  ✅ Passed: 555 (72.1%)
+  ❌ Failed: 130 (16.9%)
+  ⚠️  Unsupported: 85 (11.0%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 40/80 (50.0%)
+     session_1p: 65/80 (81.3%)
+     misc: 25/30 (83.3%)
+     query: 90/115 (78.3%)
+     https: 25/25 (100.0%)
+     fingerprinting: 40/40 (100.0%)
+     navigation: 10/15 (66.7%)
+     supercookies: 110/140 (78.6%)
+     trackers: 0/95 (0.0%)
+     tracker_cookies: 95/95 (100.0%)
+     dns: 55/55 (100.0%)
+
+FIREFOX INCOGNITO NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 419 (68.0%)
+  ❌ Failed: 169 (27.4%)
+  ⚠️  Unsupported: 28 (4.5%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 48/64 (75.0%)
+     session_1p: 64/64 (100.0%)
+     misc: 11/24 (45.8%)
+     query: 0/92 (0.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 8/32 (25.0%)
+     navigation: 8/12 (66.7%)
+     supercookies: 104/112 (92.9%)
+     trackers: 64/76 (84.2%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 20/44 (45.5%)
+
+SAFARI INCOGNITO NIGHTLY:
+  📊 Total tests: 616
+  ✅ Passed: 372 (60.4%)
+  ❌ Failed: 152 (24.7%)
+  ⚠️  Unsupported: 92 (14.9%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 32/64 (50.0%)
+     session_1p: 32/64 (50.0%)
+     misc: 0/24 (0.0%)
+     query: 92/92 (100.0%)
+     https: 16/20 (80.0%)
+     fingerprinting: 32/32 (100.0%)
+     navigation: 12/12 (100.0%)
+     supercookies: 44/112 (39.3%)
+     trackers: 24/76 (31.6%)
+     tracker_cookies: 76/76 (100.0%)
+     dns: 12/44 (27.3%)
+
+CHROME INCOGNITO NIGHTLY:
+  📊 Total tests: 770
+  ✅ Passed: 419 (54.4%)
+  ❌ Failed: 331 (43.0%)
+  ⚠️  Unsupported: 20 (2.6%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 65/80 (81.3%)
+     session_1p: 80/80 (100.0%)
+     misc: 4/30 (13.3%)
+     query: 0/115 (0.0%)
+     https: 25/25 (100.0%)
+     fingerprinting: 0/40 (0.0%)
+     navigation: 5/15 (33.3%)
+     supercookies: 135/140 (96.4%)
+     trackers: 0/95 (0.0%)
+     tracker_cookies: 95/95 (100.0%)
+     dns: 10/55 (18.2%)
+
+VIVALDI INCOGNITO NIGHTLY:
+  📊 Total tests: 770
+  ✅ Passed: 418 (54.3%)
+  ❌ Failed: 332 (43.1%)
+  ⚠️  Unsupported: 20 (2.6%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 65/80 (81.3%)
+     session_1p: 80/80 (100.0%)
+     misc: 3/30 (10.0%)
+     query: 0/115 (0.0%)
+     https: 25/25 (100.0%)
+     fingerprinting: 0/40 (0.0%)
+     navigation: 5/15 (33.3%)
+     supercookies: 135/140 (96.4%)
+     trackers: 0/95 (0.0%)
+     tracker_cookies: 95/95 (100.0%)
+     dns: 10/55 (18.2%)
+
+OPERA INCOGNITO NIGHTLY:
+  📊 Total tests: 770
+  ✅ Passed: 409 (53.1%)
+  ❌ Failed: 341 (44.3%)
+  ⚠️  Unsupported: 20 (2.6%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 65/80 (81.3%)
+     session_1p: 80/80 (100.0%)
+     misc: 4/30 (13.3%)
+     query: 0/115 (0.0%)
+     https: 25/25 (100.0%)
+     fingerprinting: 0/40 (0.0%)
+     navigation: 5/15 (33.3%)
+     supercookies: 135/140 (96.4%)
+     trackers: 0/95 (0.0%)
+     tracker_cookies: 95/95 (100.0%)
+     dns: 0/55 (0.0%)
+
+EDGE INCOGNITO NIGHTLY:
+  📊 Total tests: 770
+  ✅ Passed: 389 (50.5%)
+  ❌ Failed: 376 (48.8%)
+  ⚠️  Unsupported: 5 (0.6%)
+  🔒 Special modes: Incognito, Nightly
+  📁 Session breakdown:
+     session_3p: 80/80 (100.0%)
+     session_1p: 80/80 (100.0%)
+     misc: 4/30 (13.3%)
+     query: 0/115 (0.0%)
+     https: 25/25 (100.0%)
+     fingerprinting: 0/40 (0.0%)
+     navigation: 5/15 (33.3%)
+     supercookies: 120/140 (85.7%)
+     trackers: 0/95 (0.0%)
+     tracker_cookies: 65/95 (68.4%)
+     dns: 10/55 (18.2%)
+
+================================================================================
+TEST TYPE SUMMARY:
+--------------------------------------------------
+Total unique test types: 103
+Test types: cookie (JS), cookie (HTTP), localStorage, indexedDB, fetch cache, XMLHttpRequest cache, iframe cache, CacheStorage, favicon cache, CookieStore, CSS cache, image cache, script cache, font cache, prefetch cache, Alt-Svc, Tor enabled, GPC enabled third-party, ECH enabled, Stream isolation, IP address leak, GPC enabled first-party, fbclid, gclid, msclkid, mc_eid, dclid, oly_anon_id, oly_enc_id, _openstat, vero_conv, vero_id, wickedid, yclid, __s, rb_clickid, s_cid, ml_subscriber, ml_subscriber_hash, _hsenc, __hssc, __hstc, __hsfp, hsCtaTracking, mkt_tok, Upgradable image, Upgradable script, Upgradable hyperlink, Upgradable address, Insecure website warning, screenX, screenY, outerHeight, screen.width, screen.height, Media query screen width, Media query screen height, System font detection, sessionStorage, window.name, document.referrer, SharedWorker, blob, BroadcastChannel, locks, TLS Session ID, H1 connection, H2 connection, H3 connection, getDirectory, ServiceWorker, HSTS cache, HSTS cache (fetch), Google (third-party ad pixel), Google Tag Manager, DoubleClick (Google), Google Analytics, Facebook tracking, Amazon adsystem, Scorecard Research Beacon, New Relic, Criteo, Adobe, Adobe Audience Manager, AppNexus, Twitter pixel, Bing Ads, Taboola, Index Exchange, Yandex Ads, Quantcast, Chartbeat, OS DNS: Cloudflare, OS DNS: Google, OS DNS: Quad9, OS DNS: Comodo, Location: Brazil, Location: China, Location: Germany, Location: India, Location: Nigeria, Location: Russia, Location: United States
+

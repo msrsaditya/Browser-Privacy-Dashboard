@@ -1,0 +1,218 @@
+Starting analysis...
+Processing 60 browser test entries...
+================================================================================
+                    COMPREHENSIVE BROWSER TEST ANALYSIS
+================================================================================
+
+OVERALL SUMMARY:
+--------------------------------------------------
+Total browsers tested: 12
+Total tests performed: 7380
+Unique test types: 91
+Session types: session_3p, session_1p, misc, query, https, fingerprinting, navigation, supercookies, trackers
+Average pass rate: 34.6%
+
+🏆 Best performer: brave (66.7%)
+📉 Worst performer: yandex (21.8%)
+
+BROWSER BREAKDOWN:
+--------------------------------------------------
+
+BRAVE:
+  📊 Total tests: 615
+  ✅ Passed: 410 (66.7%)
+  ❌ Failed: 195 (31.7%)
+  ⚠️  Unsupported: 10 (1.6%)
+  📁 Session breakdown:
+     session_3p: 20/80 (25.0%)
+     session_1p: 5/80 (6.3%)
+     misc: 15/30 (50.0%)
+     query: 115/115 (100.0%)
+     https: 20/25 (80.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 10/15 (66.7%)
+     supercookies: 120/140 (85.7%)
+     trackers: 95/95 (100.0%)
+
+FOCUS:
+  📊 Total tests: 615
+  ✅ Passed: 373 (60.7%)
+  ❌ Failed: 192 (31.2%)
+  ⚠️  Unsupported: 50 (8.1%)
+  📁 Session breakdown:
+     session_3p: 70/80 (87.5%)
+     session_1p: 70/80 (87.5%)
+     misc: 13/30 (43.3%)
+     query: 0/115 (0.0%)
+     https: 25/25 (100.0%)
+     fingerprinting: 5/35 (14.3%)
+     navigation: 10/15 (66.7%)
+     supercookies: 100/140 (71.4%)
+     trackers: 80/95 (84.2%)
+
+TOR:
+  📊 Total tests: 615
+  ✅ Passed: 370 (60.2%)
+  ❌ Failed: 160 (26.0%)
+  ⚠️  Unsupported: 85 (13.8%)
+  📁 Session breakdown:
+     session_3p: 40/80 (50.0%)
+     session_1p: 65/80 (81.3%)
+     misc: 25/30 (83.3%)
+     query: 90/115 (78.3%)
+     https: 25/25 (100.0%)
+     fingerprinting: 30/35 (85.7%)
+     navigation: 10/15 (66.7%)
+     supercookies: 85/140 (60.7%)
+     trackers: 0/95 (0.0%)
+
+CROMITE:
+  📊 Total tests: 615
+  ✅ Passed: 220 (35.8%)
+  ❌ Failed: 335 (54.5%)
+  ⚠️  Unsupported: 60 (9.8%)
+  📁 Session breakdown:
+     session_3p: 0/80 (0.0%)
+     session_1p: 15/80 (18.8%)
+     misc: 10/30 (33.3%)
+     query: 0/115 (0.0%)
+     https: 25/25 (100.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 15/15 (100.0%)
+     supercookies: 110/140 (78.6%)
+     trackers: 35/95 (36.8%)
+
+DUCKDUCKGO:
+  📊 Total tests: 615
+  ✅ Passed: 165 (26.8%)
+  ❌ Failed: 425 (69.1%)
+  ⚠️  Unsupported: 25 (4.1%)
+  📁 Session breakdown:
+     session_3p: 5/80 (6.3%)
+     session_1p: 5/80 (6.3%)
+     misc: 5/30 (16.7%)
+     query: 15/115 (13.0%)
+     https: 5/25 (20.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 0/15 (0.0%)
+     supercookies: 25/140 (17.9%)
+     trackers: 95/95 (100.0%)
+
+CHROME:
+  📊 Total tests: 615
+  ✅ Passed: 151 (24.6%)
+  ❌ Failed: 454 (73.8%)
+  ⚠️  Unsupported: 10 (1.6%)
+  📁 Session breakdown:
+     session_3p: 8/80 (10.0%)
+     session_1p: 8/80 (10.0%)
+     misc: 5/30 (16.7%)
+     query: 0/115 (0.0%)
+     https: 20/25 (80.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 5/15 (33.3%)
+     supercookies: 95/140 (67.9%)
+     trackers: 0/95 (0.0%)
+
+SAMSUNG:
+  📊 Total tests: 615
+  ✅ Passed: 151 (24.6%)
+  ❌ Failed: 419 (68.1%)
+  ⚠️  Unsupported: 45 (7.3%)
+  📁 Session breakdown:
+     session_3p: 0/80 (0.0%)
+     session_1p: 0/80 (0.0%)
+     misc: 0/30 (0.0%)
+     query: 0/115 (0.0%)
+     https: 15/25 (60.0%)
+     fingerprinting: 35/35 (100.0%)
+     navigation: 10/15 (66.7%)
+     supercookies: 90/140 (64.3%)
+     trackers: 1/95 (1.1%)
+
+OPERA:
+  📊 Total tests: 615
+  ✅ Passed: 150 (24.4%)
+  ❌ Failed: 440 (71.5%)
+  ⚠️  Unsupported: 25 (4.1%)
+  📁 Session breakdown:
+     session_3p: 5/80 (6.3%)
+     session_1p: 5/80 (6.3%)
+     misc: 0/30 (0.0%)
+     query: 0/115 (0.0%)
+     https: 10/25 (40.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 5/15 (33.3%)
+     supercookies: 90/140 (64.3%)
+     trackers: 25/95 (26.3%)
+
+EDGE:
+  📊 Total tests: 615
+  ✅ Passed: 145 (23.6%)
+  ❌ Failed: 460 (74.8%)
+  ⚠️  Unsupported: 10 (1.6%)
+  📁 Session breakdown:
+     session_3p: 5/80 (6.3%)
+     session_1p: 5/80 (6.3%)
+     misc: 5/30 (16.7%)
+     query: 0/115 (0.0%)
+     https: 20/25 (80.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 5/15 (33.3%)
+     supercookies: 95/140 (67.9%)
+     trackers: 0/95 (0.0%)
+
+VIVALDI:
+  📊 Total tests: 615
+  ✅ Passed: 144 (23.4%)
+  ❌ Failed: 461 (75.0%)
+  ⚠️  Unsupported: 10 (1.6%)
+  📁 Session breakdown:
+     session_3p: 5/80 (6.3%)
+     session_1p: 5/80 (6.3%)
+     misc: 4/30 (13.3%)
+     query: 0/115 (0.0%)
+     https: 20/25 (80.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 5/15 (33.3%)
+     supercookies: 95/140 (67.9%)
+     trackers: 0/95 (0.0%)
+
+FIREFOX:
+  📊 Total tests: 615
+  ✅ Passed: 137 (22.3%)
+  ❌ Failed: 453 (73.7%)
+  ⚠️  Unsupported: 25 (4.1%)
+  📁 Session breakdown:
+     session_3p: 3/80 (3.8%)
+     session_1p: 3/80 (3.8%)
+     misc: 1/30 (3.3%)
+     query: 0/115 (0.0%)
+     https: 10/25 (40.0%)
+     fingerprinting: 5/35 (14.3%)
+     navigation: 10/15 (66.7%)
+     supercookies: 105/140 (75.0%)
+     trackers: 0/95 (0.0%)
+
+YANDEX:
+  📊 Total tests: 615
+  ✅ Passed: 134 (21.8%)
+  ❌ Failed: 470 (76.4%)
+  ⚠️  Unsupported: 11 (1.8%)
+  📁 Session breakdown:
+     session_3p: 4/80 (5.0%)
+     session_1p: 5/80 (6.3%)
+     misc: 5/30 (16.7%)
+     query: 0/115 (0.0%)
+     https: 10/25 (40.0%)
+     fingerprinting: 10/35 (28.6%)
+     navigation: 5/15 (33.3%)
+     supercookies: 95/140 (67.9%)
+     trackers: 0/95 (0.0%)
+
+================================================================================
+TEST TYPE SUMMARY:
+--------------------------------------------------
+Total unique test types: 91
+Test types: cookie (JS), cookie (HTTP), localStorage, indexedDB, fetch cache, XMLHttpRequest cache, iframe cache, CacheStorage, favicon cache, CookieStore, CSS cache, image cache, script cache, font cache, prefetch cache, Alt-Svc, Tor enabled, GPC enabled third-party, ECH enabled, Stream isolation, IP address leak, GPC enabled first-party, fbclid, gclid, msclkid, mc_eid, dclid, oly_anon_id, oly_enc_id, _openstat, vero_conv, vero_id, wickedid, yclid, __s, rb_clickid, s_cid, ml_subscriber, ml_subscriber_hash, _hsenc, __hssc, __hstc, __hsfp, hsCtaTracking, mkt_tok, Upgradable image, Upgradable script, Upgradable hyperlink, Upgradable address, Insecure website warning, screenX, screenY, outerHeight, screen.width, screen.height, Media query screen width, Media query screen height, sessionStorage, window.name, document.referrer, SharedWorker, blob, BroadcastChannel, locks, TLS Session ID, H1 connection, H2 connection, H3 connection, getDirectory, ServiceWorker, HSTS cache, HSTS cache (fetch), Google (third-party ad pixel), Google Tag Manager, DoubleClick (Google), Google Analytics, Facebook tracking, Amazon adsystem, Scorecard Research Beacon, New Relic, Criteo, Adobe, Adobe Audience Manager, AppNexus, Twitter pixel, Bing Ads, Taboola, Index Exchange, Yandex Ads, Quantcast, Chartbeat
+
