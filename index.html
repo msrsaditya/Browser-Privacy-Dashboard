@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy dashboard comparing browsers' privacy and security features. Source: privacytests.org">
+    <title>Browser Privacy Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans bg-gradient-to-tr from-gray-900 via-gray-900 to-blue-900/50">
+    <div id="app"></div>
+    <script>
+        let state = {
+            selectedPlatform: 'Desktop',
+        };
+
+        const platformData = {
+            "Desktop": {
+                browsers: [
+                    { name: 'Mullvad', passed: 685, failed: 15, unsupported: 70, total: 770, passRate: 89.0 },
+                    { name: 'LibreWolf', passed: 645, failed: 80, unsupported: 45, total: 770, passRate: 83.8 },
+                    { name: 'Brave', passed: 556, failed: 209, unsupported: 5, total: 770, passRate: 72.2 },
+                    { name: 'DuckDuckGo', passed: 395, failed: 311, unsupported: 64, total: 770, passRate: 51.3 },
+                    { name: 'Firefox', passed: 282, failed: 463, unsupported: 25, total: 770, passRate: 36.6 },
+                    { name: 'Safari', passed: 273, failed: 435, unsupported: 62, total: 770, passRate: 35.5 },
+                    { name: 'Ungoogled', passed: 250, failed: 500, unsupported: 20, total: 770, passRate: 32.5 },
+                    { name: 'Opera', passed: 235, failed: 530, unsupported: 5, total: 770, passRate: 30.5 },
+                    { name: 'Edge', passed: 205, failed: 560, unsupported: 5, total: 770, passRate: 26.6 },
+                    { name: 'Vivaldi', passed: 202, failed: 563, unsupported: 5, total: 770, passRate: 26.2 },
+                    { name: 'Chrome', passed: 146, failed: 615, unsupported: 9, total: 770, passRate: 19.0 }
+                ]
+            },
+            "Desktop (Private)": {
+                browsers: [
+                    { name: 'Brave', passed: 565, failed: 47, unsupported: 4, total: 616, passRate: 91.7 },
+                    { name: 'Mullvad', passed: 685, failed: 15, unsupported: 70, total: 770, passRate: 89.0 },
+                    { name: 'LibreWolf', passed: 652, failed: 63, unsupported: 55, total: 770, passRate: 84.7 },
+                    { name: 'Firefox', passed: 526, failed: 209, unsupported: 35, total: 770, passRate: 68.3 },
+                    { name: 'Safari', passed: 505, failed: 150, unsupported: 115, total: 770, passRate: 65.6 },
+                    { name: 'Vivaldi', passed: 421, failed: 329, unsupported: 20, total: 770, passRate: 54.7 },
+                    { name: 'Chrome', passed: 420, failed: 330, unsupported: 20, total: 770, passRate: 54.5 },
+                    { name: 'Opera', passed: 414, failed: 336, unsupported: 20, total: 770, passRate: 53.8 },
+                    { name: 'Ungoogled', passed: 411, failed: 339, unsupported: 20, total: 770, passRate: 53.4 },
+                    { name: 'DuckDuckGo', passed: 398, failed: 310, unsupported: 62, total: 770, passRate: 51.7 },
+                    { name: 'Edge', passed: 392, failed: 373, unsupported: 5, total: 770, passRate: 50.9 }
+                ]
+            },
+            "Desktop (Nightly)": {
+                browsers: [
+                    { name: 'Tor', passed: 444, failed: 104, unsupported: 68, total: 616, passRate: 72.1 },
+                    { name: 'Brave', passed: 435, failed: 177, unsupported: 4, total: 616, passRate: 70.6 },
+                    { name: 'DuckDuckGo', passed: 317, failed: 249, unsupported: 50, total: 616, passRate: 51.5 },
+                    { name: 'Safari', passed: 239, failed: 328, unsupported: 49, total: 616, passRate: 38.8 },
+                    { name: 'Firefox', passed: 236, failed: 360, unsupported: 20, total: 616, passRate: 38.3 },
+                    { name: 'Opera', passed: 188, failed: 424, unsupported: 4, total: 616, passRate: 30.5 },
+                    { name: 'Vivaldi', passed: 172, failed: 440, unsupported: 4, total: 616, passRate: 27.9 },
+                    { name: 'Edge', passed: 164, failed: 448, unsupported: 4, total: 616, passRate: 26.6 },
+                    { name: 'Chrome', passed: 121, failed: 491, unsupported: 4, total: 616, passRate: 19.6 }
+                ]
+            },
+            "Desktop (Nightly, Private)": {
+                browsers: [
+                    { name: 'Brave', passed: 704, failed: 61, unsupported: 5, total: 770, passRate: 91.4 },
+                    { name: 'Tor', passed: 555, failed: 130, unsupported: 85, total: 770, passRate: 72.1 },
+                    { name: 'Firefox', passed: 419, failed: 169, unsupported: 28, total: 616, passRate: 68.0 },
+                    { name: 'Safari', passed: 372, failed: 152, unsupported: 92, total: 616, passRate: 60.4 },
+                    { name: 'Chrome', passed: 419, failed: 331, unsupported: 20, total: 770, passRate: 54.4 },
+                    { name: 'Vivaldi', passed: 418, failed: 332, unsupported: 20, total: 770, passRate: 54.3 },
+                    { name: 'Opera', passed: 409, failed: 341, unsupported: 20, total: 770, passRate: 53.1 },
+                    { name: 'Edge', passed: 389, failed: 376, unsupported: 5, total: 770, passRate: 50.5 }
+                ]
+            },
+            "Android": {
+                browsers: [
+                    { name: 'Brave', passed: 410, failed: 195, unsupported: 10, total: 615, passRate: 66.7 },
+                    { name: 'Focus', passed: 373, failed: 192, unsupported: 50, total: 615, passRate: 60.7 },
+                    { name: 'Tor', passed: 370, failed: 160, unsupported: 85, total: 615, passRate: 60.2 },
+                    { name: 'Cromite', passed: 220, failed: 335, unsupported: 60, total: 615, passRate: 35.8 },
+                    { name: 'DuckDuckGo', passed: 165, failed: 425, unsupported: 25, total: 615, passRate: 26.8 },
+                    { name: 'Chrome', passed: 151, failed: 454, unsupported: 10, total: 615, passRate: 24.6 },
+                    { name: 'Samsung', passed: 151, failed: 419, unsupported: 45, total: 615, passRate: 24.6 },
+                    { name: 'Opera', passed: 150, failed: 440, unsupported: 25, total: 615, passRate: 24.4 },
+                    { name: 'Edge', passed: 145, failed: 460, unsupported: 10, total: 615, passRate: 23.6 },
+                    { name: 'Vivaldi', passed: 144, failed: 461, unsupported: 10, total: 615, passRate: 23.4 },
+                    { name: 'Firefox', passed: 137, failed: 453, unsupported: 25, total: 615, passRate: 22.3 },
+                    { name: 'Yandex', passed: 134, failed: 470, unsupported: 11, total: 615, passRate: 21.8 }
+                ]
+            },
+            "iOS": {
+                browsers: [
+                    { name: 'Brave', passed: 351, failed: 195, unsupported: 69, total: 615, passRate: 57.1 },
+                    { name: 'Focus', passed: 280, failed: 235, unsupported: 100, total: 615, passRate: 45.5 },
+                    { name: 'DuckDuckGo', passed: 241, failed: 292, unsupported: 82, total: 615, passRate: 39.2 },
+                    { name: 'Yandex', passed: 214, failed: 326, unsupported: 75, total: 615, passRate: 34.8 },
+                    { name: 'Opera', passed: 178, failed: 370, unsupported: 67, total: 615, passRate: 28.9 },
+                    { name: 'Safari', passed: 171, failed: 380, unsupported: 64, total: 615, passRate: 27.8 },
+                    { name: 'Firefox', passed: 133, failed: 400, unsupported: 82, total: 615, passRate: 21.6 },
+                    { name: 'Chrome', passed: 133, failed: 415, unsupported: 67, total: 615, passRate: 21.6 },
+                    { name: 'Edge', passed: 133, failed: 415, unsupported: 67, total: 615, passRate: 21.6 },
+                    { name: 'Vivaldi', passed: 131, failed: 415, unsupported: 69, total: 615, passRate: 21.3 }
+                ]
+            }
+        };
+
+        const categoryData = {
+            session_3p: { name: 'Third-party Sessions', emoji: '🔒' },
+            session_1p: { name: 'First-party Sessions', emoji: '🏠' },
+            trackers: { name: 'Tracker Blocking', emoji: '🚫' },
+            supercookies: { name: 'Supercookie Protection', emoji: '🍪' },
+            fingerprinting: { name: 'Fingerprinting Protection', emoji: '👤' },
+            https: { name: 'HTTPS Upgrades', emoji: '🔐' },
+            query: { name: 'Query Parameter Stripping', emoji: '🔗' },
+            misc: { name: 'Miscellaneous', emoji: '⚙️' },
+            navigation: { name: 'Navigation Privacy', emoji: '🧭' },
+            tracker_cookies: { name: 'Tracker Cookies', emoji: '📜' },
+            dns: { name: 'DNS Privacy', emoji: '🌐' },
+        };
+
+        const ICONS = {
+            Shield: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+            Award: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-green-400"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>`,
+            TrendingDown: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-red-400"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>`,
+            Check: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><polyline points="20 6 9 17 4 12"/></svg>`,
+            X: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-red-400"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+            AlertTriangle: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gray-400"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+            Link2: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-gray-400"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>`,
+            CalendarClock: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-gray-400"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M21.5 17.5a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z"/><path d="M17 15.5v2.5l1.5 1"/></svg>`
+        };
+
+        const PIE_COLORS = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ef4444'];
+        let chartInstances = {};
+
+        const getGradeColor = (passRate) => {
+            if (passRate >= 80) return 'text-green-400 bg-green-500/10';
+            if (passRate >= 60) return 'text-blue-400 bg-blue-500/10';
+            if (passRate >= 40) return 'text-yellow-400 bg-yellow-500/10';
+            if (passRate >= 20) return 'text-orange-400 bg-orange-500/10';
+            return 'text-red-400 bg-red-500/10';
+        };
+
+        const getGrade = (passRate) => {
+            if (passRate >= 80) return 'A';
+            if (passRate >= 60) return 'B';
+            if (passRate >= 40) return 'C';
+            if (passRate >= 20) return 'D';
+            return 'F';
+        };
+
+        const createStatCard = (title, value, subtitle, icon, color) => `
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 hover:scale-105">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-sm font-medium ${color}">${title}</p>
+                        <p class="text-3xl font-bold text-white mt-2 truncate">${value}</p>
+                        <p class="text-sm text-gray-400 mt-1">${subtitle}</p>
+                    </div>
+                    <div class="p-3 rounded-full bg-gray-900/50">${icon}</div>
+                </div>
+            </div>
+        `;
+
+        const createBrowserCard = (browser) => `
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:shadow-2xl hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-white truncate">${browser.name}</h3>
+                        <div class="px-3 py-1 rounded-full text-sm font-bold ${getGradeColor(browser.passRate)}">
+                            ${getGrade(browser.passRate)}
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">Pass Rate</span>
+                            <span class="font-semibold text-white">${browser.passRate}%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2.5">
+                            <div class="bg-gradient-to-r from-blue-500 to-cyan-400 h-2.5 rounded-full transition-all duration-500 ease-out" style="width: ${browser.passRate}%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-sm pt-4 mt-auto">
+                    <div class="text-center p-2 rounded-lg bg-green-500/10">
+                        <div class="flex items-center justify-center space-x-1.5">
+                            ${ICONS.Check}
+                            <span class="font-bold text-lg text-white">${browser.passed}</span>
+                        </div>
+                        <span class="text-xs text-gray-400">Passed</span>
+                    </div>
+                    <div class="text-center p-2 rounded-lg bg-red-500/10">
+                        <div class="flex items-center justify-center space-x-1.5">
+                            ${ICONS.X}
+                            <span class="font-bold text-lg text-white">${browser.failed}</span>
+                        </div>
+                        <span class="text-xs text-gray-400">Failed</span>
+                    </div>
+                    <div class="text-center p-2 rounded-lg bg-gray-500/10">
+                        <div class="flex items-center justify-center space-x-1.5">
+                            ${ICONS.AlertTriangle}
+                            <span class="font-bold text-lg text-white">${browser.unsupported}</span>
+                        </div>
+                        <span class="text-xs text-gray-400">N/A</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        Chart.register(ChartDataLabels);
+
+        const lineChartHoverPlugin = {
+            id: 'lineChartHoverPlugin',
+            afterDraw: (chart, args, options) => {
+                const { tooltip, ctx, chartArea: { top, bottom, left, right }, scales: { x, y } } = chart;
+                if (tooltip.getActiveElements().length) {
+                    const activeElement = tooltip.getActiveElements()[0];
+                    const xPos = activeElement.element.x;
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(xPos, top);
+                    ctx.lineTo(xPos, bottom);
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        };
+
+        const createMainBarChart = (browsers) => {
+            const ctx = document.getElementById('mainBarChart').getContext('2d');
+            if (chartInstances.mainBarChart) {
+                chartInstances.mainBarChart.destroy();
+            }
+            chartInstances.mainBarChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: browsers.map(b => b.name),
+                    datasets: [
+                        { label: 'Passed', data: browsers.map(b => b.passed), backgroundColor: '#10b981', borderRadius: { topLeft: 4, topRight: 4 } },
+                        { label: 'Failed', data: browsers.map(b => b.failed), backgroundColor: '#ef4444' },
+                        { label: 'N/A', data: browsers.map(b => b.unsupported), backgroundColor: '#6b7280' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            align: 'center',
+                            labels: {
+                                color: '#ffffff',
+                                boxWidth: 12,
+                                padding: 20,
+                                font: { size: 13 },
+                                generateLabels: (chart) => {
+                                    const datasets = chart.data.datasets;
+                                    return datasets.map((ds, i) => ({
+                                        text: ds.label,
+                                        fillStyle: ds.backgroundColor,
+                                        strokeStyle: ds.borderColor || ds.backgroundColor,
+                                        lineWidth: ds.borderWidth,
+                                        hidden: !chart.isDatasetVisible(i),
+                                        datasetIndex: i,
+                                        fontColor: '#ffffff'
+                                    }));
+                                }
+                            }
+                        },
+                        tooltip: {
+                            enabled: false,
+                            external: (context) => {
+                                const { chart, tooltip } = context;
+                                let tooltipEl = chart.canvas.parentNode.querySelector('div.chart-custom-tooltip');
+                                if (!tooltipEl) {
+                                    tooltipEl = document.createElement('div');
+                                    tooltipEl.className = 'chart-custom-tooltip bg-gray-900/80 backdrop-blur-sm border border-white/20 rounded-lg p-4 text-white text-sm opacity-0 pointer-events-none absolute transition-opacity duration-200 z-10';
+                                    chart.canvas.parentNode.appendChild(tooltipEl);
+                                }
+                                if (tooltip.opacity === 0) {
+                                    tooltipEl.style.opacity = 0;
+                                    return;
+                                }
+                                const dataIndex = tooltip.dataPoints[0].dataIndex;
+                                const browser = browsers[dataIndex];
+                                tooltipEl.innerHTML = `
+                                    <p class="font-bold text-base mb-2">${browser.name}</p>
+                                    <p><span class="text-green-400">Passed:</span> ${browser.passed} (${((browser.passed / browser.total) * 100).toFixed(1)}%)</p>
+                                    <p><span class="text-red-400">Failed:</span> ${browser.failed} (${((browser.failed / browser.total) * 100).toFixed(1)}%)</p>
+                                    <p><span class="text-gray-400">N/A:</span> ${browser.unsupported} (${((browser.unsupported / browser.total) * 100).toFixed(1)}%)</p>
+                                    <p class="border-t border-white/20 mt-2 pt-2"><span class="font-semibold">Total:</span> ${browser.total} tests</p>
+                                `;
+                                const { offsetLeft, offsetTop } = chart.canvas;
+                                tooltipEl.style.opacity = 1;
+                                tooltipEl.style.left = offsetLeft + tooltip.caretX + 'px';
+                                tooltipEl.style.top = offsetTop + tooltip.caretY + 'px';
+                                tooltipEl.style.transform = 'translate(-50%, -100%) translateY(-10px)';
+                            }
+                        },
+                        datalabels: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            ticks: { color: '#9ca3af', font: { size: 12 }, maxRotation: 45, minRotation: 45, autoSkip: false },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)', drawBorder: false }
+                        },
+                        y: {
+                            stacked: true,
+                            ticks: { color: '#9ca3af', font: { size: 12 } },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)', drawBorder: false }
+                        }
+                    },
+                    interaction: { intersect: false, mode: 'index' },
+                }
+            });
+        };
+
+        const createTopPerformersPieChart = (browsers) => {
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            if (chartInstances.pieChart) {
+                chartInstances.pieChart.destroy();
+            }
+            const topBrowsers = browsers.slice(0, 5);
+            chartInstances.pieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: topBrowsers.map(b => b.name),
+                    datasets: [{
+                        data: topBrowsers.map(b => b.passed),
+                        backgroundColor: PIE_COLORS,
+                        borderColor: '#111827',
+                        borderWidth: 2,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    layout: { padding: 40 },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(31, 41, 55, 0.8)',
+                            borderColor: '#4b5563',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            padding: 10,
+                            titleFont: { weight: 'bold' },
+                            displayColors: false,
+                            callbacks: {
+                                label: (context) => `${context.parsed} Tests Passed`,
+                                title: (context) => context[0].label
+                            }
+                        },
+                        datalabels: {
+                            formatter: (value, context) => {
+                                const browserName = context.chart.data.labels[context.dataIndex];
+                                return browserName.split(' ')[0];
+                            },
+                            color: '#e5e7eb',
+                            font: { size: 12 },
+                            anchor: 'end',
+                            align: 'end',
+                            offset: 10
+                        }
+                    }
+                }
+            });
+        };
+
+        const createRankingLineChart = (browsers) => {
+            const ctx = document.getElementById('lineChart').getContext('2d');
+            if (chartInstances.lineChart) {
+                chartInstances.lineChart.destroy();
+            }
+            chartInstances.lineChart = new Chart(ctx, {
+                type: 'line',
+                plugins: [lineChartHoverPlugin],
+                data: {
+                    labels: browsers.map(b => b.name),
+                    datasets: [{
+                        label: 'Tests Passed',
+                        data: browsers.map(b => b.passed),
+                        borderColor: '#3b82f6',
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#3b82f6',
+                        pointBorderColor: '#111827',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#60a5fa',
+                        pointHoverBorderColor: '#1d4ed8'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { display: false },
+                        datalabels: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(31, 41, 55, 0.8)',
+                            borderColor: '#4b5563',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            padding: 10,
+                            displayColors: false,
+                            titleFont: { weight: 'bold', color: '#fff' },
+                            bodyFont: { color: '#e5e7eb' },
+                            callbacks: {
+                                label: (context) => `${context.parsed.y} tests passed`,
+                                title: (context) => context[0].label,
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { color: '#9ca3af', font: { size: 12 } },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)', drawBorder: false },
+                            title: {
+                                display: true,
+                                text: 'Tests Passed',
+                                color: '#9ca3af',
+                                font: { size: 14 }
+                            }
+                        },
+                        x: {
+                            display: false,
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        };
+
+        const renderApp = () => {
+            const app = document.getElementById('app');
+            const sortedBrowsers = [...platformData[state.selectedPlatform].browsers].sort((a, b) => b.passed - a.passed);
+            const currentData = { browsers: sortedBrowsers };
+            const bestPerformer = currentData.browsers.length > 0 ? currentData.browsers[0] : null;
+            const worstPerformer = currentData.browsers.length > 0 ? currentData.browsers[currentData.browsers.length - 1] : null;
+
+            app.innerHTML = `
+                <header class="bg-white/5 backdrop-blur-lg border-b border-white/10 sticky top-0 z-30">
+                    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="py-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="p-3 bg-blue-600 rounded-xl shadow-lg shadow-blue-600/30">${ICONS.Shield}</div>
+                                <h1 class="text-xl md:text-2xl font-bold text-white">Browser Privacy Dashboard</h1>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-3">
+                                <div class="flex items-center gap-x-2 bg-white/10 px-3 py-1.5 rounded-full text-xs text-gray-300">
+                                    ${ICONS.Link2}
+                                    <span>Source:</span>
+                                    <a href="https://privacytests.org" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors font-medium">privacytests.org</a>
+                                </div>
+                                <div class="flex items-center gap-x-2 bg-white/10 px-3 py-1.5 rounded-full text-xs text-gray-300">
+                                    ${ICONS.CalendarClock}
+                                    <span>Last updated:</span>
+                                    <span class="font-medium text-white">June 6, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <main class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-10">
+                    <section>
+                        <h2 class="text-lg font-semibold text-white mb-4">Select Platform</h2>
+                        <div class="flex flex-wrap gap-3">
+                            ${Object.keys(platformData).map(platform => `
+                                <button data-platform="${platform}" class="platform-btn px-4 py-2.5 rounded-lg font-medium transition-all duration-200 text-sm md:text-base outline-none ring-1 ring-white/10 focus:ring-2 focus:ring-blue-500 ${
+                                    state.selectedPlatform === platform ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'bg-white/5 text-gray-300 hover:bg-white/10'
+                                }">
+                                    <span>${platform}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </section>
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${bestPerformer ? createStatCard('Best Performer', bestPerformer.name, `${bestPerformer.passed} tests passed`, ICONS.Award, 'text-green-400') : '<div class="bg-white/5 border border-white/10 rounded-2xl p-6"></div>'}
+                        ${worstPerformer ? createStatCard('Worst Performer', worstPerformer.name, `${worstPerformer.passed} tests passed`, ICONS.TrendingDown, 'text-red-400') : '<div class="bg-white/5 border border-white/10 rounded-2xl p-6"></div>'}
+                    </section>
+                    <section class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h2 class="text-xl font-semibold text-white mb-6">Browser Performance Comparison</h2>
+                        <div class="h-[28rem] relative">
+                            <canvas id="mainBarChart"></canvas>
+                        </div>
+                    </section>
+                    <section>
+                        <h2 class="text-xl font-semibold text-white mb-6">Individual Browser Report</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${currentData.browsers.map(browser => createBrowserCard(browser)).join('')}
+                        </div>
+                    </section>
+                    <section class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                        <div class="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col">
+                            <h2 class="text-xl font-semibold text-white mb-6">Top 5 Performers</h2>
+                            <div class="h-80 flex-grow"><canvas id="pieChart"></canvas></div>
+                        </div>
+                        <div class="lg:col-span-3 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col">
+                            <h2 class="text-xl font-semibold text-white mb-6">Performance Ranking</h2>
+                            <div class="h-80 flex-grow"><canvas id="lineChart"></canvas></div>
+                        </div>
+                    </section>
+                    <section class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h2 class="text-xl font-semibold text-white mb-6">Test Categories</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                            ${Object.entries(categoryData).filter(([key]) => key !== 'misc').map(([key, category]) => `
+                                <div key="${key}" class="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors text-center flex items-center justify-center gap-x-3">
+                                    <span class="text-xl">${category.emoji}</span>
+                                    <h3 class="font-medium text-white">${category.name}</h3>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                    <footer>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-gray-400 text-sm space-y-4">
+                            <h3 class="font-semibold text-white text-base">Important Note:</h3>
+                            <p>This data does not serve as a definitive benchmark for privacy. It simply aggregates the results of tests conducted on the privacytests.org website across various categories and browsers.</p>
+                            <p>The main idea is that the browser that passes the most tests across the largest number of categories generally performs better overall. This is typically true for the top 1% of privacy-focused browsers but may not hold for average mainstream browsers. For example, Opera shows a higher privacy score than Safari in the Desktop category. However, in reality, Opera does not offer better privacy than Safari.</p>
+                            <p>Opera has connections to the Chinese government and is known for extensive data collection. Its higher score is largely due to its ability to block more trackers and ads than Safari. Many categories on privacytests.org focus on ad-blocking, which contributes to Opera's elevated score.</p>
+                            <p>A potential solution would be to assign weights to each category, but this introduces bias based on individual priorities—what one considers important, such as ad-blocking, may not matter to everyone. Additionally, it can be inferred that Tor is less private than Brave or Mullvad, which is also not accurate. This misconception arises because Tor does not block trackers; instead, it spoofs and anonymizes them. We cannot ever test whether Tor blocks them or not because it is unfalsifiable.</p>
+                            <p>Therefore, do not consider these results as a definitive comparison of privacy among browsers. The tests are designed to identify which browser achieves the highest score across the most categories. We are looking for a browser that is a jack-of-all-trades regarding privacy, rather than a master of a single aspect, such as the anonymity provided by Tor or VPN support offered by Mullvad.</p>
+                        </div>
+                    </footer>
+                </main>
+            `;
+
+            document.querySelectorAll('.platform-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const platform = button.dataset.platform;
+                    if (platform !== state.selectedPlatform) {
+                        state.selectedPlatform = platform;
+                        renderApp();
+                    }
+                });
+            });
+
+            createMainBarChart(currentData.browsers);
+            createTopPerformersPieChart(currentData.browsers);
+            createRankingLineChart(currentData.browsers);
+        };
+
+        document.addEventListener('DOMContentLoaded', renderApp);
+    </script>
+</body>
+</html>
